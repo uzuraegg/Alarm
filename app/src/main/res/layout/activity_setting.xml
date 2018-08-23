@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/holo_blue_bright"
+    tools:context=".SettingActivity"
+    tools:layout_editor_absoluteY="25dp">
+
+    <TextView
+        android:id="@+id/dateText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="32dp"
+        android:background="@android:color/background_light"
+        android:ellipsize="start"
+        android:ems="10"
+        android:gravity="center_horizontal"
+        android:hint="日付"
+        android:inputType="date"
+        android:textColor="@android:color/holo_blue_light"
+        android:textColorHint="?android:attr/textColorHintInverse"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toTopOf="@+id/timeText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/timeText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:background="@android:color/background_light"
+        android:ellipsize="start"
+        android:ems="10"
+        android:gravity="center_horizontal"
+        android:hint="時刻"
+        android:inputType="date"
+        android:textColor="@android:color/holo_blue_light"
+        android:textColorHint="?android:attr/textColorHintInverse"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/setAlarm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="アラームセット"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timeText" />
+
+    <Button
+        android:id="@+id/cancelAlarm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="アラームキャンセル"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/setAlarm" />
+
+    <LinearLayout
+        xmlns:nendsdk="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center|bottom">
+        <net.nend.android.NendAdView
+            android:id="@+id/nend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            nendsdk:NendApiKey="c5cb8bc474345961c6e7a9778c947957ed8e1e4f"
+            nendsdk:NendSpotId="3174"
+            nendsdk:NendAdjustSize="true" />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

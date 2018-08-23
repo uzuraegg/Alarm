@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">LabyrinthAlarm</string>
+    <array name="game_strings">
+        <item>TAP TO START</item>
+        <item>GAME OVER</item>
+        <item>GOOD MORNING!!</item>
+        <item>TOTAL TIME</item>
+        <item>TOP TO BACK</item>
+    </array>
+</resources>
