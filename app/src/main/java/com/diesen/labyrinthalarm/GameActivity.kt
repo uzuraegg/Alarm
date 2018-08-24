@@ -47,6 +47,12 @@ class GameActivity : AppCompatActivity() {
         mLabyrinthView.setLabyrinthData(loadLabyrinth(Random().nextInt(3)+1))
     }
 
+    override fun onPause() {
+        super.onPause()
+        //センサーリスナーの解除
+        mSensorManager.unregisterListener(mLabyrinthView)
+    }
+
     override fun onResume() {
         super.onResume()
 
@@ -75,12 +81,6 @@ class GameActivity : AppCompatActivity() {
                 or View.SYSTEM_UI_FLAG_FULLSCREEN
                 or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                 or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
-    }
-
-    override fun onPause() {
-        super.onPause()
-        //センサーリスナーの解除
-        mSensorManager.unregisterListener(mLabyrinthView)
     }
 
     override fun onBackPressed() {
