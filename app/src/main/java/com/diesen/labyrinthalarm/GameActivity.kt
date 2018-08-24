@@ -15,7 +15,8 @@ import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStream
 import java.io.InputStreamReader
-import java.util.*
+import java.util.Random
+import java.util.StringTokenizer
 
 
 class GameActivity : AppCompatActivity() {
@@ -43,7 +44,7 @@ class GameActivity : AppCompatActivity() {
         am = applicationContext?.getSystemService(Context.AUDIO_SERVICE) as AudioManager
 
         //ゲームレベルをセット
-        mLabyrinthView.setLabyrinthData(LoadLabyrinth(Random().nextInt(3)+1))
+        mLabyrinthView.setLabyrinthData(loadLabyrinth(Random().nextInt(3)+1))
     }
 
     override fun onResume() {
@@ -79,7 +80,7 @@ class GameActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         //センサーリスナーの解除
-        mSensorManager.unregisterListener(mLabyrinthView);
+        mSensorManager.unregisterListener(mLabyrinthView)
     }
 
     override fun onBackPressed() {
@@ -102,24 +103,24 @@ class GameActivity : AppCompatActivity() {
         return true
     }
 
-    private fun LoadLabyrinth(level: Int): Array<IntArray> {
+    private fun loadLabyrinth(level: Int): Array<IntArray> {
         val fileName = "stage$level.txt"
-        val MAZE_ROWS = Labyrinth.MAZE_ROWS
-        val MAZE_COLS = Labyrinth.MAZE_COLS
-        val data = Array(MAZE_ROWS) { IntArray(MAZE_COLS) }
+        val mazeRows = Labyrinth.MAZE_ROWS
+        val mazeCols = Labyrinth.MAZE_COLS
+        val data = Array(mazeRows) { IntArray(mazeCols) }
         var `is`: InputStream? = null
         try {
             `is` = assets.open(fileName)
             val reader = BufferedReader(InputStreamReader(`is`))
             var line: String
             var i = 0
-            while (i < MAZE_ROWS) {
+            while (i < mazeRows) {
                 line = reader.readLine()
                 if (line == null)
                     break
                 val st = StringTokenizer(line, ",")
                 var j = 0
-                while (st.hasMoreTokens() && j < MAZE_COLS) {
+                while (st.hasMoreTokens() && j < mazeCols) {
                     //空白があれば除去
                     val s = st.nextToken().trim()
                     data[i][j] = Integer.parseInt(s)
@@ -132,7 +133,7 @@ class GameActivity : AppCompatActivity() {
         } finally {
             if (`is` != null) {
                 try {
-                    `is`!!.close()
+                    `is`.close()
                 } catch (e: IOException) {
                 }
             }

@@ -8,9 +8,9 @@ import android.widget.Toast
 class AlarmBroadcastReceiver: BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
         Toast.makeText(context, "アラームを受信しました", Toast.LENGTH_SHORT).show()
-        val intent = Intent(context, SettingActivity::class.java)
+        val settingIntent = Intent(context, SettingActivity::class.java)
                 .putExtra("onReceive", true)
                 .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        context?.startActivity(intent)
+        context?.startActivity(settingIntent)
     }
 }

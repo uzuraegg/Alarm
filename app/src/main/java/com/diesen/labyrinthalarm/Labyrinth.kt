@@ -17,7 +17,7 @@ class Labyrinth {
         const val VOID_TILE = 3
     }
 
-    var mData = Array(MAZE_ROWS, {IntArray(MAZE_COLS,{0})})
+    var mData = Array(MAZE_ROWS) {IntArray(MAZE_COLS,{0})}
 
     private var mTileWidth: Int by Delegates.notNull()
     private var mTileHeight: Int by Delegates.notNull()
@@ -50,8 +50,8 @@ class Labyrinth {
     }
 
     fun getCellType(x: Int, y: Int): Int {
-        val j = (x / mTileWidth).toInt()
-        val i = (y / mTileHeight).toInt()
+        val j = (x / mTileWidth)
+        val i = (y / mTileHeight)
         return if (i < MAZE_ROWS && j < MAZE_COLS) mData[i][j] else PATH_TILE
     }
 }

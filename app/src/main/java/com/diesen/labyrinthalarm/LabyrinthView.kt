@@ -73,7 +73,7 @@ class LabyrinthView(context: Context?) : View(context), SensorEventListener {
 
     //ゲームループ用
     private var mHandler = Handler()
-    private var mDrawThread = Runnable {gemeLoop()}
+    private var mDrawThread = Runnable {gameLoop()}
 
 
     //ゲームの初期化
@@ -125,13 +125,13 @@ class LabyrinthView(context: Context?) : View(context), SensorEventListener {
             GAME_COMPLETE -> {
                 canvas.drawRect(0.0f, 0.0f, mWidth.toFloat(), mHeight.toFloat(), mBgPaint)
                 canvas.drawText(TXT_GAME_COMPLETE, (mWidth / 2).toFloat(), (mHeight / 2).toFloat(), mTxtPaintResult)
-                canvas.drawText(TXT_TOTAL_TIME + ": " + mTotalTime + " ms", (mWidth / 2).toFloat(), mHeight / 2 + mTxtPaintResult.fontSpacing, mTxtPaintResult)
+                canvas.drawText("$TXT_TOTAL_TIME: $mTotalTime ms", (mWidth / 2).toFloat(), mHeight / 2 + mTxtPaintResult.fontSpacing, mTxtPaintResult)
                 canvas.drawText(TXT_RESTART, (mWidth / 2).toFloat(), mHeight - mTxtPaintResult.fontSpacing * 3, mTxtPaintResult)
             }
         }
     }
 
-    public fun setLabyrinthData(data:Array<IntArray>){
+    fun setLabyrinthData(data:Array<IntArray>){
         mLabyrinth.mData = data
     }
 
@@ -149,7 +149,7 @@ class LabyrinthView(context: Context?) : View(context), SensorEventListener {
     }
 
     //ゲーム実行中のループ
-    private fun gemeLoop() {
+    private fun gameLoop() {
         mVectorX -= mAccelX
         mVectorY += mAccelY
         val nextX = (mBall.mX + mVectorX).toInt()

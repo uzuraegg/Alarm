@@ -13,7 +13,8 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_setting.*
 import java.text.ParseException
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Calendar
+import java.util.Date
 
 
 class SettingActivity : AppCompatActivity()
@@ -37,7 +38,7 @@ class SettingActivity : AppCompatActivity()
         val state = data.getString("State", "stop")
 
         if(intent?.getBooleanExtra("onReceive", false) == true || state == "run"){
-            var intent = Intent(application, GameActivity::class.java)
+            val intent = Intent(application, GameActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
             startActivity(intent)
         }
