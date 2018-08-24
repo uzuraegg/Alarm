@@ -28,7 +28,7 @@ class GameActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val data: SharedPreferences = this.getSharedPreferences("DataSave", Context.MODE_PRIVATE)
+        val data = this.getSharedPreferences("DataSave", Context.MODE_PRIVATE)
         val editor = data.edit()
         editor.putString("State", "run")
         editor.apply()
